@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+</head>
+<body>
+    <!-- <h1>hhh</h1> -->
+    <div id="app">
+        <div id="heading">
+            <h1 style=" text-align: center;"> Todo app</h1>
+        </div>
+        <div id="form_1">
+            <form action="Create_job" method="Post">
+                  <input type="text" name="Description" placeholder="Description" >
+                  <select name="category" id="category" placeholder="Category">
+                    <option value="" disabled selected>Category</option>
+                    <option value="Personal">Personal</option>
+                    <option value="work">work</option>
+                    <option value="School">School</option>
+                    <option value="other">other</option>
+                  </select>
+                  
+                  <input type="text" id='date' name="date">
+
+                  <button type="submit" id='add_Task'>Add Task</button>
+                  <!-- <button id='delete_Task'>Delete Task</button> -->
+
+
+            </form>
+        </div>
+        <form action="delete-task" method="POST">
+            <button type="submit" >delete</button>
+        <div id='task_display'>
+            
+            <ul>
+              
+               <% for(let i of task_list) { %>
+                    <li>
+                        
+                        <%= i.Description %>
+                        <%= i.category %>
+                        <%= i.date %>
+                        
+
+                        
+                        <input id='checkbox' type="checkbox" name='delete' value="<%= i._id %>"> 
+                                
+                        
+                            
+
+                        
+                    </li>
+                    <% } %>
+                    
+            </ul>
+           
+        </div>
+        </form>
+        
+
+    </div>
+    
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js" integrity="sha256-xH4q8N0pEzrZMaRmd7gQVcTZiFei+HfRTBPJ1OGXC0k=" crossorigin="anonymous"></script>
+    <script>
+        $('#date').datepicker({
+            
+        });
+        console.log('eh')
+    </script>
+</body>
+
+
+
+</html>
