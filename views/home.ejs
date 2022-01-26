@@ -10,61 +10,92 @@
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+  <script src="https://kit.fontawesome.com/ddb16e3944.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/home.css">
 </head>
 <body>
     <!-- <h1>hhh</h1> -->
     <div id="app">
-        <div id="heading">
-            <h1 style=" text-align: center;"> Todo app</h1>
+        <div id="heading" class='items' >
+          <h1 id='icon' class="fas fa-list-alt"></h1>
+            <h1 id='Todo'> To-do App</h1>
         </div>
-        <div id="form_1">
-            <form action="Create_job" method="Post">
-                  <input type="text" name="Description" placeholder="Description" >
-                  <select name="category" id="category" placeholder="Category">
-                    <option value="" disabled selected>Category</option>
-                    <option value="Personal">Personal</option>
-                    <option value="work">work</option>
-                    <option value="School">School</option>
-                    <option value="other">other</option>
+        <div id='form-grid'>
+            <form id="form_1"action="Create_job" method="Post">
+                <div id='Description' >
+                  <label for="Description" style="color: aliceblue;">Task</label>
+                  <input  class='items' type="text" name="Description" placeholder="Description" >
+                </div>
+                
+                <div id='Category' class='items'>
+                  <label for="category" style="color: aliceblue;">select category</label>
+                  <select name="category"  placeholder="Category" style="margin-left: 20px;">
+                    <optgroup style="font-family:Bradley Hand, cursive">
+                    <option  id="1"  value="" disabled selected >Category</option>
+                    <option id="3"  value="Personal">Personal</option>
+                    <option id="4" value="work">work</option>
+                    <option id="5" value="School">School</option>
+                    <option id="6" value="other">other</option>
+                  </optgroup>
                   </select>
-                  
-                  <input type="text" id='date' name="date">
+                </div>
+                
+                <div id='datepicker' class='items'>
+                  <label for="datepicker" style="color: aliceblue;">select date</label>
+                  <input  class='items' type="text" id='date' name="date" placeholder="select date ">
+                </div>
 
-                  <button type="submit" id='add_Task'>Add Task</button>
+                <div id='add' class='items'>
+                  <button type="submit" id='add_Task' class="fas fa-plus-square" ><h>Add Task</h></button>
                   <!-- <button id='delete_Task'>Delete Task</button> -->
-
+                    </div>  
 
             </form>
         </div>
-        <form action="delete-task" method="POST">
-            <button type="submit" >delete</button>
-        <div id='task_display'>
+        
+      <div id="form_2">
+        <form action="delete-task" method="POST" id="form_21" >
+            <div id='Delete' class='items'>
+            <button id='Delete-button' type="submit" ><i class="fas fa-trash-alt"></i>delete</button>
+            </div>
+        
+        
+        
+          <div id='task_display' class='items'>
             
             <ul>
               
                <% for(let i of task_list) { %>
-                    <li>
+                <!-- <div id=task>   -->
+                  
+                  <li>
+                    <div id='task'>  
+                      <div id='task-content'>
                         
-                        <%= i.Description %>
-                        <%= i.category %>
-                        <%= i.date %>
-                        
+                        <div id='Description-div'> 
+                          <!-- <h id='task-description'>Task</h><br> -->
+                          <h id='task-description'><%= i.Description %></h>
+                        </div>
+                        <div id='category-div'><B><%= i.category %></B></div>
+                        <div id='date-div'> <i class="fas fa-clock"></i> <%= i.date %></div>
+                      </div>
 
-                        
-                        <input id='checkbox' type="checkbox" name='delete' value="<%= i._id %>"> 
-                                
-                        
+                      <div id='checkbox-div'>
+                        <input id='checkbox' type="checkbox" name='delete' value="<%= i._id %>"> <p id='checkbox-item'>Click to delete the task</p>
+                      </div>    
+                      </div>
                             
 
                         
                     </li>
+                   
                     <% } %>
-                    
+                   
             </ul>
            
         </div>
         </form>
-        
+        </div>  
 
     </div>
     
@@ -75,7 +106,27 @@
         $('#date').datepicker({
             
         });
-        console.log('eh')
+
+       
+        let a=document.getElementById("checkbox");
+        console.log(a);
+        // if(a.checked == true){
+        //   alert('hh');
+        // }
+        a.addEventListener("click",function(){
+          if(a.checked == true){
+            let b=document.getElementById('checkbox-item');
+            console.log(b);
+          }
+        })
+
+        // alert('jhh');
+
+    // $(document).ready(function() {
+    // $('select[name=category] option[id=1]').text('Category');
+    //   });
+    // $('select[name=category] option[id=1]').text.css({
+    //   "background-color": 'green',});
     </script>
 </body>
 

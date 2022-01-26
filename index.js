@@ -14,7 +14,7 @@ app.listen(port, function(err){
 })
 
 app.use(express.urlencoded());
-
+app.use(express.static('assets'));
 
 app.get('/',function(req,res){
     console.log('hh');
